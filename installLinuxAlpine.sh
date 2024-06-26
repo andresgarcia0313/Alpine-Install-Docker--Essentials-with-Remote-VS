@@ -8,7 +8,7 @@ apk update
 apk upgrade
 
 # Instalar Docker y herramientas adicionales
-
+apk add sudo
 apk add docker
 apk add nano
 apk add bash
@@ -28,4 +28,9 @@ rc-update add docker boot
 
 # Añadir usuario actual al grupo docker
 addgroup andres docker
-apk clean
+
+apk add sudo
+addgroup -S wheel
+adduser andres -G wheel -D
+echo "andres ALL=(ALL) ALL" >> /etc/sudoers
+visudo
